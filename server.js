@@ -6,6 +6,7 @@ const connectDB = require("./db")
 const userRoute = require("./routes/userRoute")
 const blogRoute = require("./routes/blogRoute")
 const authrouter = require("./routes/authRoute")
+const path = require('path')
 
 // dotenv configer
 require("dotenv").config()
@@ -17,13 +18,16 @@ const app = express()
 
 // run only in heroku server
 if(process.env.NODE_ENV==="production"){
-    app.use(express.static("client/build"))
+    app.get('/', (req, res)=>{
+        app.use(express.static(path.resolve(__dirname, "client", 'build')))
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+
 }
 
 // connect mongoDB
-let dbUserName = process.env.DB_USERNAME
-let dbPassword = process.env.DB_PASSWORD
-const URL = `mongodb+srv://${dbUserName}:${dbPassword}@violentujjwal.hgckwza.mongodb.net/bolgapp`
+
+const URL = process.env.DB_URL
 connectDB(URL)
 
 // middelware
