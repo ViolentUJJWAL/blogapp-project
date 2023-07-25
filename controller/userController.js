@@ -74,8 +74,8 @@ const sendEmail = async (userEmail, sub, msg) => {
         port: 465,
         sender: true,
         auth: {
-            user: "2108ujjwal2108@gmail.com",
-            pass: "ijxjuawusjwlxprj"
+            user: process.env.EMAIL_FOR_NODEMAILER,
+            pass: process.env.APP_PASS
         }
     })
     try {
