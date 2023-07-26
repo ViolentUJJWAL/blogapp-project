@@ -54,8 +54,7 @@ function NevBar(props) {
                                     <div>
                                         <button onClick={() => {
                                             window.localStorage.clear()
-                                            navigate('/login')
-                                            window.location.reload()
+                                            navigate('/')
                                         }} className="btn ">LogOut</button>
                                     </div>
                             }

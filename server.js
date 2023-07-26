@@ -17,13 +17,13 @@ const PORT = process.env.PORT || 8000
 const app = express()
 
 // run only in heroku server
-if(process.env.NODE_ENV==="production"){
+
     app.get('/', (req, res)=>{
         app.use(express.static(path.resolve(__dirname, "client", 'build')))
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 
-}
+
 
 // connect mongoDB
 
